@@ -5,8 +5,7 @@ class PlatformsController < ApplicationController
   end
 
   def create
-    puts 'creating'
-    @platform = Platform.new(platform_params)
+    @platform =Platform.new(platform_params)
     if @platform.save
       render json: @platform, status: :ok
     else
