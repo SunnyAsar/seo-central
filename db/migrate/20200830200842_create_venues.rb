@@ -9,6 +9,7 @@ class CreateVenues < ActiveRecord::Migration[6.0]
       t.decimal :lat, precision: 10, scale: 8, null: false
       t.decimal :lng, precision: 10, scale: 8, null: false
       t.boolean :closed, null: false
+      t.string :hours
       t.string :category_id
 
       t.timestamps

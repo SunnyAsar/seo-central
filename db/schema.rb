@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_08_30_200842) do
     t.decimal "lat", precision: 10, scale: 8, null: false
     t.decimal "lng", precision: 10, scale: 8, null: false
     t.boolean "closed", null: false
+    t.string "hours"
     t.string "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
