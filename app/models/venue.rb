@@ -6,6 +6,7 @@ class Venue < ApplicationRecord
   validates :primary_address, presence: true
   validates :lat, :lng, presence: true
   validates :closed, presence: true
+  validates :category_id, presence: true
 
   has_and_belongs_to_many :platforms
 

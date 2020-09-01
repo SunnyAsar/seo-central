@@ -2,6 +2,7 @@ class VenuesController < ApplicationController
 
   before_action :set_venue, only: [:show, :update]
   before_action :set_platformdata, only: :platform_data
+  after_action :update_platforms, only: :update
 
   def index
     @venues = Venue.all
@@ -34,6 +35,10 @@ class VenuesController < ApplicationController
     render json: data, status: :ok if data 
   end
 
+  def update_platforms
+    UpdatePlatformService.new(@venue.id).update_platforms
+  end
+
   private
 
   def set_venue
@@ -50,5 +55,5 @@ class VenuesController < ApplicationController
                                   :website, :phone, :lat, :lng, :closed,
                                   :hours, :category_id)
   end
-  
+
 end
