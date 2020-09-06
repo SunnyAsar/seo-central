@@ -1,6 +1,5 @@
 # fronzen-string
 class Venue < ApplicationRecord
-  include HTTParty
 
   validates :name, presence: true, length: { minimum: 3 }
   validates :primary_address, presence: true
@@ -12,7 +11,7 @@ class Venue < ApplicationRecord
 
   def get_data(platform)
     url = "https://rails-code-challenge.herokuapp.com/#{platform}/venue?api_key=#{ENV['API_KEY']}"
-    request = HTTParty.get(url)
-    response = JSON.parse(request.body)
+    resquest = Faraday.get url
+    resquest.body
   end
 end

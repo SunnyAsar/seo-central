@@ -7,7 +7,7 @@ Seo-Central provides an API interface to manage company information on multiple 
 
 - Ruby, Rails
 - Postgresql
-- HTTParty 
+- Faraday Gem 
 
 
 ## Getting Started

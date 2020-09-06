@@ -1,5 +1,7 @@
+require 'faraday'
+require 'json'
+
 class UpdatePlatformService
-  include HTTParty
   attr_accessor :venue
 
   def initialize(venue_id)
@@ -7,17 +9,10 @@ class UpdatePlatformService
   end
 
   def update_platforms
-    puts "here about to update the platform #{venue}"
     @venue.platforms.each do |platform|
-
       data = data_object(platform)
       url = "https://rails-code-challenge.herokuapp.com/#{platform.name}/venue?api_key=#{ENV['API_KEY']}"
-      request = HTTParty.patch(url.to_s, { 
-        body: [{ venue: data_object }].to_json,
-        headers: {
-        'Content-Type': 'application/json'
-        } })
-      JSON.parse(resquest.body)
+      Faraday.patch(url, { venue: data })
     end
   end
 
@@ -31,8 +26,6 @@ class UpdatePlatformService
       platform_b
     when 'platform_c'
       platform_c
-    else
-      nil
     end
   end
 
@@ -48,7 +41,7 @@ class UpdatePlatformService
     {
       name: venue.name, street_address: venue.primary_address,
       lat: venue.lat, lng: venue.lng, closed: venue.closed,
-      hours: venue.hours, category_id: venue.category_id,
+      hours: venue.hours, category_id: venue.category_id
     }
   end
 

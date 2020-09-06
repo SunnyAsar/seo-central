@@ -32,7 +32,7 @@ class VenuesController < ApplicationController
 
   def platform_data
     data = @venue.get_data(@platform)
-    render json: data, status: :ok if data 
+    render json: data, status: :ok if data
   end
 
   def update_platforms
@@ -55,5 +55,4 @@ class VenuesController < ApplicationController
                                   :website, :phone, :lat, :lng, :closed,
                                   :hours, :category_id)
   end
-
 end
